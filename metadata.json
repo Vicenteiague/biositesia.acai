@@ -1,0 +1,6 @@
+{
+  "name": "Açaí do Bela - Cardápio & BioSite",
+  "description": "Açaí com sabor de verdade em Goiânia/GO! Açaí na garrafa, monte seu açaí em camadas, copos e combos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
