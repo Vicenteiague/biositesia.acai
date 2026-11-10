@@ -49,17 +49,17 @@ export const STORE_CONFIG = {
   city: 'Goiânia/GO',
   cityShort: 'Goiânia',
   neighborhood: 'Setor Bela Vista',
-  phoneDisplay: '(62) 99339-4515',
-  whatsappNumber: '5562993394515',
+  phoneDisplay: '(67) 99317-4612',
+  whatsappNumber: '5567993174612',
   instagramUrl: 'https://www.instagram.com/',
   googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=Setor+Bela+Vista+Goiania+GO',
   ifoodUrl:
     'https://www.ifood.com.br/delivery/goiania-go/acai-do-bela-setor-bela-vista/798edf69-6d2a-410b-9a07-9c4ad3b7aa45?utm_medium=share',
   food99Url: 'https://oia.99app.com/dlp9/SBnztI',
   pixCode:
-    '00020126360014BR.GOV.BCB.PIX0114+55629933945155204000053039865802BR5912Acai do Bela6007Goiania62070503***6304',
+    '00020126360014BR.GOV.BCB.PIX0114+55679931746125204000053039865802BR5912Acai do Bela6007Goiania62070503***6304',
   pixQrUrl:
-    'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126360014BR.GOV.BCB.PIX0114+55629933945155204000053039865802BR5912Acai%20do%20Bela6007Goiania62070503***6304',
+    'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=00020126360014BR.GOV.BCB.PIX0114+55679931746125204000053039865802BR5912Acai%20do%20Bela6007Goiania62070503***6304',
   customSizes: [
     { id: '300ml', label: 'Copo 300ml', volume: '300 ml', price: 22.9 },
     { id: '400ml', label: 'Copo 400ml', volume: '400 ml', price: 39.9 },
