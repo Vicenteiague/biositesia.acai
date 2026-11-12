@@ -284,12 +284,22 @@ export default function App() {
     [cart]
   );
 
+  const openExternalLink = (url: string) => {
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  };
+
   const sendOrderToWhatsApp = () => {
     if (cart.length === 0) {
       const defaultUrl = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(
         'Olá! Quero fazer um pedido no Açaí do Bela.'
       )}`;
-      window.open(defaultUrl, '_blank', 'noopener,noreferrer');
+      openExternalLink(defaultUrl);
       return;
     }
 
@@ -310,7 +320,7 @@ export default function App() {
     const url = `https://wa.me/${STORE_CONFIG.whatsappNumber}?text=${encodeURIComponent(
       lines.join('\n')
     )}`;
-    window.open(url, '_blank', 'noopener,noreferrer');
+    openExternalLink(url);
   };
 
   // Filtered and Sorted Products
@@ -406,13 +416,18 @@ export default function App() {
             </div>
 
             {/* Cidade Pill */}
-            <a
-              href="#onde-estamos"
-              className="mt-4 inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 text-xs text-white font-medium transition"
+            <button
+              type="button"
+              onClick={() =>
+                document
+                  .getElementById('onde-estamos')
+                  ?.scrollIntoView({ behavior: 'smooth' })
+              }
+              className="mt-4 inline-flex items-center gap-1.5 px-5 py-2 rounded-full bg-white/15 hover:bg-white/25 backdrop-blur-md border border-white/25 text-xs text-white font-medium transition cursor-pointer"
             >
               <MapPin className="w-3.5 h-3.5 text-[#7c3aed] fill-[#7c3aed]" />
               <span>{STORE_CONFIG.city}</span>
-            </a>
+            </button>
           </div>
 
           {/* Wave Separator at the bottom of the Hero */}
@@ -484,9 +499,14 @@ export default function App() {
           </a>
 
           {/* CTA 2: Ver cardápio */}
-          <a
-            href="#catalogo"
-            className="flex items-center justify-between p-4 rounded-[24px] bg-white hover:bg-purple-50/50 border border-purple-100 shadow-sm transition active:scale-[0.99]"
+          <button
+            type="button"
+            onClick={() =>
+              document
+                .getElementById('catalogo')
+                ?.scrollIntoView({ behavior: 'smooth' })
+            }
+            className="w-full text-left flex items-center justify-between p-4 rounded-[24px] bg-white hover:bg-purple-50/50 border border-purple-100 shadow-sm transition active:scale-[0.99] cursor-pointer"
           >
             <div className="flex items-center gap-3.5">
               <div className="w-12 h-12 bg-[#6d32a0] text-white rounded-2xl flex items-center justify-center shrink-0">
@@ -502,13 +522,18 @@ export default function App() {
               </div>
             </div>
             <ChevronRight className="w-5 h-5 text-slate-500 shrink-0" />
-          </a>
+          </button>
 
           {/* CTA 3: Sabor da semana */}
-          <a
-            href="#catalogo"
-            onClick={() => setActiveCategory('copos')}
-            className="relative flex items-center justify-between p-4 rounded-[24px] bg-white hover:bg-purple-50/50 border border-purple-100 shadow-sm transition active:scale-[0.99] overflow-hidden"
+          <button
+            type="button"
+            onClick={() => {
+              setActiveCategory('copos');
+              document
+                .getElementById('catalogo')
+                ?.scrollIntoView({ behavior: 'smooth' });
+            }}
+            className="w-full text-left relative flex items-center justify-between p-4 rounded-[24px] bg-white hover:bg-purple-50/50 border border-purple-100 shadow-sm transition active:scale-[0.99] overflow-hidden cursor-pointer"
           >
             {/* Badge NOVO no canto superior direito */}
             <span className="absolute top-0 right-4 px-3 py-1 text-[10px] font-extrabold uppercase bg-[#2d0c4e] text-white rounded-b-xl tracking-wider">
@@ -529,7 +554,7 @@ export default function App() {
               </div>
             </div>
             <ChevronRight className="w-5 h-5 text-slate-500 shrink-0 mt-2" />
-          </a>
+          </button>
 
           {/* CTA 4: Pagar com Pix (Expansível) */}
           <div className="rounded-[24px] bg-white border border-purple-100 shadow-sm overflow-hidden">
@@ -1239,6 +1264,8 @@ export default function App() {
               </a>
               <a
                 href={`tel:+${STORE_CONFIG.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="py-3.5 px-4 rounded-2xl bg-white border-[1.5px] border-[#4a1875] text-[#321052] font-semibold text-sm flex items-center justify-center gap-2 hover:bg-purple-50 transition"
               >
                 <Phone className="w-4 h-4" />
@@ -1288,6 +1315,8 @@ export default function App() {
             {/* Card Telefone */}
             <a
               href={`tel:+${STORE_CONFIG.whatsappNumber}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3.5 p-3.5 rounded-2xl bg-white/15 border border-white/25 text-left hover:bg-white/20 transition"
             >
               <div className="w-10 h-10 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
@@ -1361,9 +1390,18 @@ export default function App() {
           {/* Créditos do Rodapé */}
           <div className="space-y-1.5 text-xs text-white/85 pt-1">
             <p>
-              Site criado por <b className="text-white">Jonathan da Nour Sistemas</b>
+              Feito com ♥️ por <b className="text-white">BiositesAi</b>
             </p>
-            <p className="text-white/90">biosite@noursistemas.com.br</p>
+            <p className="text-white/90">
+              <a
+                href={`https://wa.me/${STORE_CONFIG.whatsappNumber}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:underline"
+              >
+                67993174612
+              </a>
+            </p>
             <button
               type="button"
               onClick={() => setTermsModalOpen(true)}
